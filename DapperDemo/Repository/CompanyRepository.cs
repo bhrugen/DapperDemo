@@ -21,11 +21,13 @@ namespace DapperDemo.Repository
         }
 
         public Company Add(Company company)
-        {
+        { 
         }
 
         public Company Find(int id)
         {
+            var sql = "SELECT * FROM Companies WHERE CompanyId = @CompanyId";
+            return db.Query<Company>(sql, new { @CompanyId = id }).Single();
         }
 
         public List<Company> GetAll()
