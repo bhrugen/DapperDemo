@@ -1,13 +1,9 @@
 ﻿@model IEnumerable<DapperDemo.Models.Company>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
+<h1>Company Management</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Add Company</a>
 </p>
 <table class="table">
     <thead>
@@ -27,6 +23,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.PostalCode)
             </th>
+            <th></th>
             <th></th>
         </tr>
     </thead>
@@ -49,9 +46,12 @@
                 @Html.DisplayFor(modelItem => item.PostalCode)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CompanyId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CompanyId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CompanyId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.CompanyId" class="btn btn-info">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.CompanyId" class="btn btn-success">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.CompanyId" class="btn btn-danger">Delete</a>
+            </td>
+            <td>
+                <a asp-action="Index" asp-controller="Employees" asp-route-companyId="@item.CompanyId" class="btn btn-primary">Manage Employees</a>
             </td>
         </tr>
 }
