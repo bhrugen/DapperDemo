@@ -34,6 +34,12 @@ namespace DapperDemo.Controllers
 
         public IActionResult Create()
         {
+            IEnumerable<SelectListItem> companyList = _compRepo.GetAll().Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.CompanyId.ToString()
+            });
+            ViewBag.CompanyList = companyList;
             return View();
         }
 
@@ -58,6 +64,12 @@ namespace DapperDemo.Controllers
             }
 
             Employee = _empRepo.Find(id.GetValueOrDefault());
+            IEnumerable<SelectListItem> companyList = _compRepo.GetAll().Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.CompanyId.ToString()
+            });
+            ViewBag.CompanyList = companyList;
             if (Employee == null)
             {
                 return NotFound();
