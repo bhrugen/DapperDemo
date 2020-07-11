@@ -30,6 +30,7 @@ namespace DapperDemo
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<ICompanyRepository, CompanyRepositoryContib>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IBonusRepository, BonusRepository>();
             services.AddControllersWithViews();
         }
 
