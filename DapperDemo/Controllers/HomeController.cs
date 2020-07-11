@@ -61,6 +61,8 @@ namespace DapperDemo.Controllers
 
         public IActionResult RemoveTestRecords()
         {
+            int[] companyIdToRemove = _bonRepo.FilterCompanyByName("Test").Select(i => i.CompanyId).ToArray();
+            _bonRepo.RemoveRange(companyIdToRemove);
             return RedirectToAction(nameof(Index));
         }
 
