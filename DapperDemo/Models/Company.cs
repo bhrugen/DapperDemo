@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace DapperDemo.Models
 {
     public class Company
     {
-
+        [Key]
         public int CompanyId { get; set; }
         public string Name { get; set; }
 
@@ -16,6 +17,8 @@ namespace DapperDemo.Models
         public string City { get; set; }
         public string State { get; set; }
         public string PostalCode { get; set; }
+
+        [Write(false)]
         public List<Employee> Employees { get; set; }
     }
 }
