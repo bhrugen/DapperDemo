@@ -19,7 +19,28 @@ namespace DapperDemo.Repository
             this.db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
-        public Company GetCompanyWithAddresses(int id)
+        public List<Company> GetAllCompanyWithEmployees()
+        {
+            var sql = "SELECT C.*,E.* FROM Employees AS E INNER JOIN Companies AS C ON E.CompanyId = C.CompanyId ";
+
+            var companyDic = new Dictionary<int, Company>();
+
+            var company = db.Query<Company, Employee, Company>(sql, (c, e) =>
+            {
+                if (!companyDic.TryGetValue(c.CompanyId, out var currentCompany))
+                {
+                    currentCompany = c;
+                    companyDic.Add(currentCompany.CompanyId, currentCompany);
+                }
+                currentCompany.Employees.Add(e);
+                return currentCompany;
+            }, splitOn: "EmployeeId");
+
+            return company.Distinct().ToList();
+
+        }
+
+        public Company GetCompanyWithEmployees(int id)
         {
             var p = new
             {
