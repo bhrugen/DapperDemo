@@ -16,6 +16,8 @@ namespace DapperDemo.Repository
 
         void AddTestCompanyWithEmployees(Company objComp);
 
+        void AddTestCompanyWithEmployeesWithTransaction(Company objComp);
+
         void RemoveRange(int[] companyId);
 
         List<Company> FilterCompanyByName(string name);
