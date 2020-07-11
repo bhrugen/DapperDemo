@@ -6,21 +6,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using DapperDemo.Models;
+using DapperDemo.Repository;
 
 namespace DapperDemo.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IBonusRepository _bonRepo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IBonusRepository bonRepo)
         {
             _logger = logger;
+            _bonRepo = bonRepo;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Company> companies = _bonRepo.GetAllCompanyWithEmployees();
+            return View(companies);
         }
 
         public IActionResult Privacy()

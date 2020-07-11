@@ -1,8 +1,55 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<DapperDemo.Models.Company>
+
+
+<div class="row">
+    <div class="col-3 offset-6">
+        <a class="btn btn-success form-control" asp-action="AddTestRecords">Add Dummy Records</a>
+    </div>
+    <div class="col-3">
+        <a class="btn btn-danger form-control" asp-action="RemoveTestRecords">Remove Dummy Records</a>
+    </div>
+</div>
+
+@foreach (Company comp in Model)
+{
+    <h1>@comp.Name</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Title)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in comp.Employees)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
