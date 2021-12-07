@@ -17,13 +17,14 @@ namespace DapperDemo.Repository
 
         public EmployeeRepository(IConfiguration configuration)
         {
-            this.db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
+            db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
         public Employee Add(Employee employee)
         {
-            var sql = "INSERT INTO Employees (Name, Title, Email, Phone, CompanyId) VALUES(@Name, @Title, @Email, @Phone, @CompanyId);"
-                        +"SELECT CAST(SCOPE_IDENTITY() as int); ";
+            var sql =
+                "INSERT INTO Employees (Name, Title, Email, Phone, CompanyId) VALUES(@Name, @Title, @Email, @Phone, @CompanyId);"
+                + "SELECT CAST(SCOPE_IDENTITY() as int); ";
             var id = db.Query<int>(sql, employee).Single();
             employee.EmployeeId = id;
             return employee;
@@ -31,8 +32,9 @@ namespace DapperDemo.Repository
 
         public async Task<Employee> AddAsync(Employee employee)
         {
-            var sql = "INSERT INTO Employees (Name, Title, Email, Phone, CompanyId) VALUES(@Name, @Title, @Email, @Phone, @CompanyId);"
-                        + "SELECT CAST(SCOPE_IDENTITY() as int); ";
+            var sql =
+                "INSERT INTO Employees (Name, Title, Email, Phone, CompanyId) VALUES(@Name, @Title, @Email, @Phone, @CompanyId);"
+                + "SELECT CAST(SCOPE_IDENTITY() as int); ";
             var id = await db.QueryAsync<int>(sql, employee);
             employee.EmployeeId = id.Single();
             return employee;
@@ -58,7 +60,8 @@ namespace DapperDemo.Repository
 
         public Employee Update(Employee employee)
         {
-            var sql = "UPDATE Employees SET Name = @Name, Title = @Title, Email = @Email, Phone = @Phone, CompanyId = @CompanyId WHERE EmployeeId = @EmployeeId";
+            var sql =
+                "UPDATE Employees SET Name = @Name, Title = @Title, Email = @Email, Phone = @Phone, CompanyId = @CompanyId WHERE EmployeeId = @EmployeeId";
             db.Execute(sql, employee);
             return employee;
         }

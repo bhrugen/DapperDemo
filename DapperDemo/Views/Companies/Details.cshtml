@@ -1,60 +1,60 @@
 ﻿@model DapperDemo.Models.Company
 
-    <div class="container">
-        <div class="row">
-            <div class="col-9">
-                <h1>Company Details</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h1>Company Details</h1>
 
-            </div>
-            <div class="col-3">
-<a asp-action="Index" asp-controller="Companies" class="btn btn-warning">Back to Companies</a>
-            </div>
         </div>
-        <hr />
-
-        <div class="row p-1">
-            <div class="col-3">
-                Name
-            </div>
-            <div class="col-9">
-                <input asp-for="Name" class="form-control" />
-            </div>
+        <div class="col-3">
+            <a asp-action="Index" asp-controller="Companies" class="btn btn-warning">Back to Companies</a>
         </div>
-        <div class="row p-1">
-            <div class="col-3">
-                Address
-            </div>
-            <div class="col-9">
-                <input asp-for="Address" class="form-control" />
-            </div>
-        </div>
-        <div class="row p-1">
-            <div class="col-3">
-                City
-            </div>
-            <div class="col-9">
-                <input asp-for="City" class="form-control" />
-            </div>
-        </div>
-        <div class="row p-1">
-            <div class="col-3">
-                State
-            </div>
-            <div class="col-9">
-                <input asp-for="State" class="form-control" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3">
-                Postal Code
-            </div>
-            <div class="col-9">
-                <input asp-for="PostalCode" class="form-control" />
-            </div>
-        </div>
-
     </div>
-<hr />
+    <hr/>
+
+    <div class="row p-1">
+        <div class="col-3">
+            Name
+        </div>
+        <div class="col-9">
+            <input asp-for="Name" class="form-control"/>
+        </div>
+    </div>
+    <div class="row p-1">
+        <div class="col-3">
+            Address
+        </div>
+        <div class="col-9">
+            <input asp-for="Address" class="form-control"/>
+        </div>
+    </div>
+    <div class="row p-1">
+        <div class="col-3">
+            City
+        </div>
+        <div class="col-9">
+            <input asp-for="City" class="form-control"/>
+        </div>
+    </div>
+    <div class="row p-1">
+        <div class="col-3">
+            State
+        </div>
+        <div class="col-9">
+            <input asp-for="State" class="form-control"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            Postal Code
+        </div>
+        <div class="col-9">
+            <input asp-for="PostalCode" class="form-control"/>
+        </div>
+    </div>
+
+</div>
+<hr/>
 <div class="container pt-2">
     <div class="row py-2">
         <h3>Employee Details</h3>
@@ -62,8 +62,8 @@
     <div class="row">
         @if (Model.Employees.Count() > 0)
         {
-        <table class="table">
-            <thead>
+            <table class="table">
+                <thead>
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.Employees.FirstOrDefault().Name)
@@ -79,8 +79,8 @@
                     </th>
                     <th></th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 @foreach (var item in Model.Employees)
                 {
                     <tr>
@@ -101,8 +101,8 @@
                         </td>
                     </tr>
                 }
-            </tbody>
-        </table>
+                </tbody>
+            </table>
         }
         else
         {

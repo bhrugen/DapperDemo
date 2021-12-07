@@ -15,8 +15,7 @@ namespace DapperDemo.Models
             Employees = new List<Employee>();
         }
 
-        [Key]
-        public int CompanyId { get; set; }
+        [Key] public int CompanyId { get; set; }
         public string Name { get; set; }
 
         public string Address { get; set; }
@@ -24,7 +23,6 @@ namespace DapperDemo.Models
         public string State { get; set; }
         public string PostalCode { get; set; }
 
-        [Write(false)]
-        public List<Employee> Employees { get; set; }
+        [Write(false)] public List<Employee> Employees { get; set; }
     }
 }

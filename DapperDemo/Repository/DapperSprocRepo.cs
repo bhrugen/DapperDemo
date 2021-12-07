@@ -11,7 +11,6 @@ namespace DapperDemo.Repository
 {
     public class DapperSprocRepo : IDapperSprocRepo
     {
-
         private IConfiguration _configuration { get; set; }
 
         public DapperSprocRepo(IConfiguration configuration)
@@ -20,10 +19,7 @@ namespace DapperDemo.Repository
             ConnectionString = _configuration.GetConnectionString("DefaultConnection");
         }
 
-        public string ConnectionString
-        {
-            get; set;
-        }
+        public string ConnectionString { get; set; }
 
 
         public void Execute(string name)
@@ -41,12 +37,11 @@ namespace DapperDemo.Repository
         }
 
 
-
-
         public T Single<T>(string name, int id)
         {
             return Single<T>(name, new { id });
         }
+
         public T Single<T>(string name, object param)
         {
             using (var cnn = new SqlConnection(ConnectionString))
@@ -57,10 +52,8 @@ namespace DapperDemo.Repository
                     return result.FirstOrDefault();
             }
 
-            return default(T);
+            return default;
         }
-
-
 
 
         public List<T> List<T>(string name, int id)
@@ -72,7 +65,6 @@ namespace DapperDemo.Repository
         {
             using (var cnn = new SqlConnection(ConnectionString))
             {
-
                 var result = cnn.Query<T>(name, param, commandType: CommandType.StoredProcedure);
 
                 if (result != null)
@@ -83,8 +75,6 @@ namespace DapperDemo.Repository
         }
 
 
-
-
         public Tuple<IEnumerable<T1>, IEnumerable<T2>> List<T1, T2>(string name, object param)
         {
             using (var cnn = new SqlConnection(ConnectionString))
@@ -93,7 +83,6 @@ namespace DapperDemo.Repository
 
                 var item1 = result.Read<T1>().ToList();
                 var item2 = result.Read<T2>().ToList();
-
 
 
                 if (item1 != null && item2 != null)
@@ -117,9 +106,9 @@ namespace DapperDemo.Repository
                     return new Tuple<IEnumerable<T1>, IEnumerable<T2>, IEnumerable<T3>>(item1, item2, item3);
             }
 
-            return new Tuple<IEnumerable<T1>, IEnumerable<T2>, IEnumerable<T3>>(new List<T1>(), new List<T2>(), new List<T3>());
+            return new Tuple<IEnumerable<T1>, IEnumerable<T2>, IEnumerable<T3>>(new List<T1>(), new List<T2>(),
+                new List<T3>());
         }
-
 
 
         public List<T> List<T>(string name)
@@ -131,6 +120,7 @@ namespace DapperDemo.Repository
                 if (result != null)
                     return result.ToList();
             }
+
             return new List<T>();
         }
 
@@ -150,10 +140,5 @@ namespace DapperDemo.Repository
                 cnn.Execute(name, null, commandType: CommandType.Text);
             }
         }
-
-
-
-
-
     }
 }

@@ -29,8 +29,7 @@ namespace DapperDemo.Controllers
 
         public IActionResult AddTestRecords()
         {
-
-            Company company = new Company()
+            var company = new Company()
             {
                 Name = "Test" + Guid.NewGuid().ToString(),
                 Address = "test address",
@@ -61,7 +60,7 @@ namespace DapperDemo.Controllers
 
         public IActionResult RemoveTestRecords()
         {
-            int[] companyIdToRemove = _bonRepo.FilterCompanyByName("Test").Select(i => i.CompanyId).ToArray();
+            var companyIdToRemove = _bonRepo.FilterCompanyByName("Test").Select(i => i.CompanyId).ToArray();
             _bonRepo.RemoveRange(companyIdToRemove);
             return RedirectToAction(nameof(Index));
         }

@@ -25,7 +25,7 @@ namespace DapperDemo.Repository
 
         public Company Find(int id)
         {
-            return _db.Companies.FirstOrDefault(u=>u.CompanyId==id);
+            return _db.Companies.FirstOrDefault(u => u.CompanyId == id);
         }
 
         public List<Company> GetAll()
@@ -35,7 +35,7 @@ namespace DapperDemo.Repository
 
         public void Remove(int id)
         {
-            Company company = _db.Companies.FirstOrDefault(u => u.CompanyId == id);
+            var company = _db.Companies.FirstOrDefault(u => u.CompanyId == id);
             _db.Companies.Remove(company);
             _db.SaveChanges();
             return;

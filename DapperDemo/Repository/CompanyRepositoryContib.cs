@@ -18,7 +18,7 @@ namespace DapperDemo.Repository
 
         public CompanyRepositoryContib(IConfiguration configuration)
         {
-            this.db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
+            db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
         public Company Add(Company company)
@@ -35,7 +35,6 @@ namespace DapperDemo.Repository
 
         public List<Company> GetAll()
         {
-           
             return db.GetAll<Company>().ToList();
         }
 

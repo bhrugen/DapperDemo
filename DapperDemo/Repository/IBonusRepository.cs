@@ -23,4 +23,3 @@ namespace DapperDemo.Repository
         List<Company> FilterCompanyByName(string name);
     }
 }
- 

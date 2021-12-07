@@ -15,6 +15,5 @@ namespace DapperDemo.Repository
         Company Update(Company company);
 
         void Remove(int id);
-
     }
 }

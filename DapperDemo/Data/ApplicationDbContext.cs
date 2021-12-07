@@ -11,7 +11,6 @@ namespace DapperDemo.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-
         }
 
         public DbSet<Company> Companies { get; set; }

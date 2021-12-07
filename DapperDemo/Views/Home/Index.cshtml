@@ -10,46 +10,45 @@
     </div>
 </div>
 
-@foreach (Company comp in Model)
+@foreach (var comp in Model)
 {
     <h1>@comp.Name</h1>
     <table class="table">
         <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Phone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Title)
-                </th>
-                <th></th>
-            </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => comp.Employees.FirstOrDefault().Title)
+            </th>
+            <th></th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var item in comp.Employees)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Phone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                </tr>
-            }
+        @foreach (var item in comp.Employees)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
 }
-

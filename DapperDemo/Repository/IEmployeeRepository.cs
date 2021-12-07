@@ -15,6 +15,5 @@ namespace DapperDemo.Repository
         Employee Update(Employee employee);
 
         void Remove(int id);
-
     }
 }

@@ -17,19 +17,19 @@ namespace DapperDemo.Repository
 
         public CompanyRepositorySP(IConfiguration configuration)
         {
-            this.db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
+            db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
         public Company Add(Company company)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("@CompanyId", 0, DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("@CompanyId", 0, DbType.Int32, ParameterDirection.Output);
             parameters.Add("@Name", company.Name);
             parameters.Add("@Address", company.Address);
             parameters.Add("@City", company.City);
             parameters.Add("@State", company.State);
             parameters.Add("@PostalCode", company.PostalCode);
-            this.db.Execute("usp_AddCompany", parameters, commandType: CommandType.StoredProcedure);
+            db.Execute("usp_AddCompany", parameters, commandType: CommandType.StoredProcedure);
             company.CompanyId = parameters.Get<int>("CompanyId");
 
             return company;
@@ -37,12 +37,12 @@ namespace DapperDemo.Repository
 
         public Company Find(int id)
         {
-            return db.Query<Company>("usp_GetCompany", new { CompanyId = id }, commandType: CommandType.StoredProcedure).SingleOrDefault();
+            return db.Query<Company>("usp_GetCompany", new { CompanyId = id }, commandType: CommandType.StoredProcedure)
+                .SingleOrDefault();
         }
 
         public List<Company> GetAll()
         {
-           
             return db.Query<Company>("usp_GetALLCompany", commandType: CommandType.StoredProcedure).ToList();
         }
 
@@ -60,8 +60,8 @@ namespace DapperDemo.Repository
             parameters.Add("@City", company.City);
             parameters.Add("@State", company.State);
             parameters.Add("@PostalCode", company.PostalCode);
-            this.db.Execute("usp_UpdateCompany", parameters, commandType: CommandType.StoredProcedure);
-           
+            db.Execute("usp_UpdateCompany", parameters, commandType: CommandType.StoredProcedure);
+
             return company;
         }
     }
