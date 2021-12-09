@@ -1,7 +1,7 @@
-﻿using DapperDemo.Data;
-using DapperDemo.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DapperDemo.Data;
+using DapperDemo.Models;
 
 namespace DapperDemo.Repository
 {

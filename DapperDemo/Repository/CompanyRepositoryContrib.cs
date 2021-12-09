@@ -1,10 +1,10 @@
-﻿using Dapper.Contrib.Extensions;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using Dapper.Contrib.Extensions;
 using DapperDemo.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 
 namespace DapperDemo.Repository
 {
