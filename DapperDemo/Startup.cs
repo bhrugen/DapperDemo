@@ -23,7 +23,7 @@ namespace DapperDemo
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<ICompanyRepository, CompanyRepositoryContib>();
+            services.AddScoped<ICompanyRepository, CompanyRepositoryContrib>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IBonusRepository, BonusRepository>();
             services.AddScoped<IDapperSprocRepo, DapperSprocRepo>();

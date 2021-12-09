@@ -1,13 +1,10 @@
 ﻿using Dapper;
-using DapperDemo.Data;
 using DapperDemo.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace DapperDemo.Repository
 {
@@ -61,7 +58,6 @@ namespace DapperDemo.Repository
             parameters.Add("@State", company.State);
             parameters.Add("@PostalCode", company.PostalCode);
             db.Execute("usp_UpdateCompany", parameters, commandType: CommandType.StoredProcedure);
-
             return company;
         }
     }
